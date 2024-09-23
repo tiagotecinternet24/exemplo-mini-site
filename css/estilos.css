@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* Regras CSS para o site inteiro */
+
+/* Regra para TUDO
+Alterando o comportamento do Box Model
+visando evitar problemas de tamanho/espaçamento PARA TODOS OS ELEMENTOS da página (por isso, usamos o *). */
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* background-image: url(../imagens/oriental-tiles.png); */
+    background: linear-gradient(to bottom, #a90329 0%,#8f0222 44%,#6d0019 100%);
+
+    background-attachment: fixed;
+}
+
+/* Imagens responsivas */
+img { max-width: 100%; }
+
+/* Regra com seletor CLASSE
+Ao usar classes, podemos escolher livremente
+onde aplicá-las, ou seja, em quais tags a classe
+será aplicada. */
+.container {
+    background-color: rgba(255, 255, 255, 0.849);
+
+    /* Bloco CENTRALIZADO */
+    width: 70%;
+    margin: auto;
+
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: red 10px 10px 30px 10px;
+}
+
+/* EXERCÍCIOOOOO 🤘 */
+.listas {
+    background: linear-gradient(darkblue, transparent, lightblue);
+    padding: 1%;
+    width: 60%;
+    margin: auto;
+    border-top: solid 4px black;
+    border-bottom: solid 4px black;
+    box-shadow: rgba(0, 0, 0, 0.471) 0 0 30px;
+}
+
+
+/* Seletor tipo TAG */
+p {
+    font-size: 18px;
+    
+    /* Usando valor fixo/absoluto em px */
+    line-height: 32px;
+
+    /* Usando valor relativo/proporcional */
+    line-height: 1.5; /* sem px/medida */
+
+    /* Obs: ao usar uma propriedade duas
+    vezes na mesma regra, sempre irá
+    prevalecer o valor da última (efeito cascata). No entanto, evite esta situação de repetir propriedades na mesma regra. */
+}
+
+
+/* Seletor Classe */
+.centralizar { text-align: center; }
+
+.destaque {
+    background-color: yellow;
+    padding: 3px;
+    border: solid 1px red;
+    border-radius: 4px;
+}
+
+figure {
+    text-align: center;
+    max-width: 419px;
+    
+    /* Versão abreviada */
+    /* margin: 0 auto; */
+
+    /* Versão detalhada */
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* Tornando o figure a
+    referência para o posicionamento
+    do figcaption. */
+    position: relative;
+    
+    /* scale(valores de zero até 1) */
+    transform: scale(0.95) rotate(2deg) translateY(20px);
+    filter: grayscale();
+    
+    transition: 200ms;
+}
+
+figcaption {
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    
+    /* Tornando o elemento absoluto.
+    Agora ele está "solto", podendo ser
+    colocado em qualquer coordenada. */
+    position: absolute;
+
+    /* Propriedades de coordenada:
+    top, bottom, left e right */
+    
+    /* Para "forçar" o tamanho total */
+    
+    /* Opção 1: use left/right */
+    right: 0;
+    left: 0;
+
+    /* Opção 2: largura de 100% */
+    width: 100%;
+
+    bottom: 20px;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* Seletor DESCENDENTE */
+figure img { border: solid 1px; }
+
+/* Seletor PSEUDO-CLASSE - começa com :
+:hover -> passar o mouse */
+figure:hover {
+    filter: none;
+    transform: scale(1);
+}
+
+
+/* Seletor DESCENDENTE */
+ol li {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+ul li { /* item da lista não-ordenada */
+    list-style-type: disc;
+}
+
+ul li a { /* link da lista não-ordenada */
+    color: white;
+    text-decoration: none;
+    text-shadow: black 1px 1px 4px;
+}
+
+/* Pseudo-elemento ::marker
+(usado apenas para fins visuais/estéticos) */
+ul li::marker {
+    content: "👻 ";
+    font-size: 16px;   
+}
+
+
+/* Pseudo-classe */
+ul li:first-child { /* primeiro "filho" */
+    background-color: black;
+}
+
+ul li:last-child { /* último "filho" */
+    background-color: red;
+}
+
+ul li:nth-child(4) { /* enésimo "filho" */
+    background-color: orange;
+}
+
+
+details {
+    background-color: white;
+    padding: 10px;
+    border: solid 10px red;
+    text-align: center;
+}
+
+summary { font-weight: bold; }
+
+summary::marker { 
+    content: "🤔 ";
+    font-size: 20px;
+}
+
+details[open] summary::marker {
+    content: "💡";
+}
+
+/* Regras para o menu de links */
+nav { 
+    text-align: center; 
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    background-color: darkred;
+    color: white;
+
+    /* Usamos o inline-block
+    para permitir definição de tamanho
+    e ao mesmo manter os elementos lado a lado. */
+    display: inline-block;
+    width: 33.33%;
+    padding: 10px;
+    transition: 200ms;
+}
+
+/* Grupo de seletores (veja o uso da vírgula)
+Uso das pseudo-classes :hover (mouse) e
+:focus (teclado/foco) */
+nav a:hover, nav a:focus {
+    background-color: black;
+    transform: translateY(-10px);
+}
+
+
+.flutuar-imagem { 
+    float: left; 
+    margin-right: 12px;
+}
+
+.efeito-clip {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+}
+
+
+/* Regra de animação */
+@keyframes cores {
+     /* Dê */
+    from { 
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    /* para */
+    to { 
+        text-shadow: darkred 0 0 10px;
+    } 
+}
+
+/* estilos.css */
+h1 { text-align: center; }
+
+/* Classe para aplicar a animação */
+.animacao-cores {
+    will-change: transform;
+
+    /* nome da animação (obrigatória) */
+    animation-name: cores;
+    
+    /* duração/tempo da animação (obrigatória) */
+    animation-duration: 1s; /* segundos ou milissegundos */
+    
+    /* Atraso (espera um pouco antes de começar) */
+    animation-delay: 5s;
+
+    /* Quantidade de repetições */
+    animation-iteration-count: infinite;
+
+    /* Direção da animação */
+    animation-direction: alternate;
+    
+    /* Funções de aceleração/desaceleração */
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+
+    /* Forma abreviada (uso opcional) */
+    /* animation: cores 1s cubic-bezier(0.55, 0.055, 0.675, 0.19) 5s infinite alternate; */
+}
+
+
+@keyframes animaSubtitulos {
+    0% { color: blue; }
+
+    50% { 
+        color: orange;
+        transform: translateX(250px);
+        opacity: 0.5;
+    }
+
+    75% { transform: translateX(10px) scale(2); }
+
+    100% { 
+        transform: scale(1); 
+        color: pink;
+        text-shadow: black 0 0 10px;
+    }
+}
+
+.subtitulo-animado {
+    display: inline-block;
+    animation-name: animaSubtitulos;
+    animation-duration: 5s;
+}
+
+h3 {
+    background-color: yellow;
+}
+
+
+/* aside */
+.banner { 
+    overflow: hidden;
+    background-color: white;
+    border: solid 4px;
+    width: 90%;
+    height: 160px;
+    margin: auto;
+    position: relative;
+}
+
+/* texto desafio */
+.banner h5 { 
+    text-align: center;
+    font-size: 36px;
+    background-color: rgba(0, 0, 0, 0.571);
+    color: white;
+    margin: 0; /* css reset */
+    
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+
+    animation-name: animaTexto;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    will-change: transform;
+    z-index: 2;
+}
+
+/* logo css */
+.banner img {
+    position: absolute;
+    z-index: 1;
+    animation-name: animaImagem;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+
+@keyframes animaImagem {
+    from { 
+        transform: translateX(-100px) rotate(0);
+    }
+
+    to {
+        transform: translateX(400px) rotate(360deg);
+    }
+}
+
+@keyframes animaTexto {
+    from { 
+        transform: scale(1);
+        background-color:black;
+    }
+
+    to {
+        background-color: blue;
+    }
+}
